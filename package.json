@@ -1,0 +1,8 @@
+{
+  "name": "Host-nd",
+  "main": "index.html",
+  "window":{
+  	"position":"center",
+  	"toolbar": false
+  }
+}
