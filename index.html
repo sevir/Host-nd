@@ -11,41 +11,13 @@
   		overflow: hidden;
   	}
   	#hostfile{
-  		height: 100%;
-  		width: 100%;
+  		height: 99%;
+  		width: 99%;
   		border: none;
   	}
   </style>
   <script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
-  <script>
-  var isWindows = /win/.test(process.platform);
-  var fs = require("fs");
-
-  var setTextareaHeight = function(){
-  	$("#hostfile").height($(window).height());
-  }
-  $(function(){
-  	$(document).keyup(function(e) {
-	  if (e.keyCode == 27) { 
-	  	fs.writeFile("/etc/hosts", $("#hostfile").val(), function(err){
-	  		if (err){
-
-	  		}
-	  		window.close(); 
-	  	});
-	  	
-
-	  }   // esc
-	});
-
-  	$(window).resize(setTextareaHeight);
-  	setTextareaHeight();
-
-  	fs.readFile("/etc/hosts", function(err,data){
-  		$("#hostfile").val(data).focus().keydown();
-  	});
-  });
-  </script>
+  <script src="libs/hosts-nd.js"></script>
   <body>
     <textarea id="hostfile"></textarea>
   </body>
