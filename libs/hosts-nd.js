@@ -2,15 +2,13 @@
   var path = require("path");
   var sys = require('sys');
   var exec = require('child_process').exec;
-
-  var setTextareaHeight = function(){
-    $("#hostfile").height($(window).height());
-  };
+  var editor;
 
   $(function(){
     $(document).keyup(function(e) {
       if (e.keyCode == 27) {
-        var hosts_data = $("#hostfile").val();
+        var hosts_data = editor.getValue();
+        
         fs.writeFile("/etc/hosts", hosts_data, function(err){
           if (err){
             var command ="";
@@ -36,15 +34,14 @@
             window.close(); 
           }          
         });
-
-
       }   // esc
     });
 
-    $(window).resize(setTextareaHeight);
-    setTextareaHeight();
-
     fs.readFile("/etc/hosts", function(err,data){
-      $("#hostfile").val(data).focus().keydown();
+      $("#hostfile").text(data);
+      editor = ace.edit("hostfile");
+      editor.setTheme("ace/theme/twilight");
+      editor.getSession().setMode("ace/mode/text");
+      editor.getSession().setUseWrapMode(true);
     });
   });

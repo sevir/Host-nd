@@ -11,14 +11,18 @@
   		overflow: hidden;
   	}
   	#hostfile{
-  		height: 99%;
-  		width: 99%;
-  		border: none;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
   	}
   </style>
   <script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
+  <script src="libs/ace/ace.js" type="text/javascript" charset="utf-8"></script>
   <script src="libs/hosts-nd.js"></script>
   <body>
-    <textarea id="hostfile"></textarea>
+    <pre id="hostfile"></pre>
   </body>
 </html>
